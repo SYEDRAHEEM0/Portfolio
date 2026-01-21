@@ -1,0 +1,1391 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #ffffff;
+  padding: 40px 60px;
+}
+
+/* LOGO */
+.logo {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  font-weight: bold;
+  padding-top: 8px;
+}
+
+/* NAV */
+.nav {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: navIn 0.4s ease forwards;
+}
+
+@keyframes navIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav a {
+  margin-left: 40px;
+  text-decoration: none;
+  color: #000;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.nav a.active::after {
+  display: block;
+  text-align: center;
+  font-size: 10px;
+  margin-top: 6px;
+}
+
+/* HERO */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px; /* Changed from 140px to 60px to move it UP */
+}
+/* LEFT */
+/* 2. Reset the left side positioning */
+.left {
+  max-width: 520px;
+  top: 0; /* Changed from -160px to 0 for a clean start */
+  position: relative;
+}
+.left h1 {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.left p {
+  margin: 28px 0;
+  font-size: 15px;
+  color: #555;
+}
+
+.left button {
+  padding: 16px 28px;
+  border-radius: 40px;
+  border: none;
+  background: #f0f0f0;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.links {
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+/* RIGHT */
+/* 3. Reset the right side positioning */
+.right {
+  position: relative;
+  width: 560px;
+  height: 460px;
+  top: -40px; /* Small negative value to pull the whole group up slightly */
+}
+
+.circle {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  background: #f2f2f2;
+  border-radius: 50%;
+  right: 0;
+  top: 0;           /* Changed from 40px to 0 to move it up */
+  margin-top: 0;    /* Reset margin */
+  margin-right: 30px;
+  display: block;
+}
+.x {
+  position: absolute;
+  font-size: 300px;
+  font-weight: 900;
+  color: #000;
+  opacity: 0.06;
+  right: 40px;
+  top: 40px;
+}
+
+
+/* SCROLL */
+.scroll {
+  position: fixed;
+  right: 20px;
+  bottom: 40px;
+  writing-mode: vertical-rl;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+.reveal {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.line {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 110%;
+  height: 54px;
+  background: #000;
+  transform: translateX(-100%);
+  animation: lineMove 0.6s ease forwards;
+  animation-delay: 0.6s;
+}
+
+.text {
+  display: inline-block;
+  transform: translateY(100%);
+  animation: textUp 1s ease forwards;
+  animation-delay: 1s;
+}
+
+
+/* second line delay */
+.line.delay::before {
+  animation-delay: 0.6s;
+}
+
+.line.delay .text {
+  animation-delay: 1s;
+}
+
+/* animations */
+@keyframes lineMove {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes textUp {
+  to {
+    transform: translateY(0);
+  }
+}
+/* ================================
+   PARAGRAPH LINE REVEAL
+================================ */
+.reveal-p {
+  position: relative;
+  overflow: hidden;
+  margin: 28px 0;
+}
+
+/* black line */
+.reveal-p .p-line {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  background: #000;
+
+  transform: translateX(-100%);
+  animation: pLineMove 0.6s ease forwards;
+  animation-delay: 1s;
+}
+
+/* text */
+.reveal-p .p-text {
+  display: block;
+  font-size: 15px;
+  color: #555;
+
+  transform: translateY(100%);
+  animation: pTextUp 0.6s ease forwards;
+  animation-delay: 1.6s;
+}
+
+/* ================================
+   KEYFRAMES
+================================ */
+@keyframes pLineMove {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pTextUp {
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* ================================
+   BOLD SHARP X (FINAL)
+================================ */
+
+.big-x {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  right: 40px;
+  top: 0;
+  z-index: 1;
+  /* This is the secret: it chops everything outside the 360px box */
+  overflow: hidden; 
+  animation: xMoveUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* COMMON BAR STYLE */
+.big-x .bar {
+  position: absolute;
+  width: 150%;      /* Longer than container to ensure it fills the diagonal */
+  height: 60px;      /* Thickness from your reference image */
+  background: #111;
+  top: 50%;
+  left: 50%;
+}
+
+/* BAR 1: Top-Left to Bottom-Right */
+.big-x .bar-1 {
+  /* Center it, then rotate, then slide it out for the animation start */
+  transform: translate(-50%, -50%) rotate(45deg) translateX(-100%);
+  animation: slideInBar1 0.9s cubic-bezier(0.77, 0, 0.18, 1) 0.2s forwards;
+}
+
+/* BAR 2: Bottom-Left to Top-Right */
+.big-x .bar-2 {
+  transform: translate(-50%, -50%) rotate(-45deg) translateX(-100%);
+  animation: slideInBar2 0.9s cubic-bezier(0.77, 0, 0.18, 1) 0.4s forwards;
+}
+
+/* ================================
+    KEYFRAMES (SLIDING INTO VIEW)
+================================ */
+
+@keyframes slideInBar1 {
+  to {
+    transform: translate(-50%, -50%) rotate(45deg) translateX(0);
+  }
+}
+
+@keyframes slideInBar2 {
+  to {
+    transform: translate(-50%, -50%) rotate(-45deg) translateX(0);
+  }
+}
+
+@keyframes xMoveUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.flex {
+  display: flex;
+  flex-direction: row;
+  gap: 150px;
+  align-items: flex-start; /* Changed from 'center' to 'flex-start' to pull everything UP */
+}
+/* COMBINED IMAGE POSITIONING */
+.right img, .hero-image {
+  position: absolute;
+  width: 280px;       /* Increased size to fit the circle better */
+  right: 80px;
+  height:380px;        /* Adjusted from 90px to move it left/center */
+  top: 15px;          /* Adjusted from 60px to move it UP */
+  filter: none;       /* THIS REMOVES THE BLACK AND WHITE */
+  z-index: 2;
+  border-radius: 60%; /* Ensures the image itself is a perfect circle */
+  /* Keep your animations below */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: 
+    imageAppear 2s ease forwards, 
+    imageFloat 3s ease-in-out infinite;
+}
+
+@keyframes imageAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes imageFloat {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* ================================
+   UNIVERSAL TEXT REVEAL
+================================ */
+.reveal-text {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+/* black line */
+.reveal-text .wipe {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 120%;
+  height: 46px;              /* thickness */
+  background: #000;
+
+  transform: translateX(-100%);
+  animation: wipeMove 0.6s ease forwards;
+  animation-delay: 0.6s;
+}
+
+/* text */
+.reveal-text .content {
+  display: inline-block;
+  text-align: center;
+  transform: translateY(120%);
+  animation: textReveal 0.6s ease forwards;
+  animation-delay: 1s;
+}
+
+/* ================================
+   KEYFRAMES
+================================ */
+@keyframes wipeMove {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes textReveal {
+  to {
+    transform: translateY(0);
+  }
+}
+/* =========================================
+   SKILLS GRID LAYOUT
+   ========================================= */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Balanced spacing */
+  gap: 60px 20px;
+  margin-top: 80px;
+  padding-bottom: 100px;
+}
+
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px); /* Subtle lift on hover */
+}
+
+/* =========================================
+   THE CIRCLE BOX & SVG
+   ========================================= */
+.circle-box {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-svg {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  transform: rotate(-90deg); /* Starts the path from the top */
+}
+
+.progress-svg circle {
+  fill: none;
+  stroke-width: 10;
+  stroke: #f2f2f2; /* Light gray background ring */
+}
+
+/* THE WORKING PART */
+.progress-svg .progress-fill {
+  stroke: #000; /* Solid black progress line */
+  stroke-linecap: square; /* Sharp edges to match your theme */
+  stroke-dasharray: 377; /* The circumference */
+  stroke-dashoffset: 377; /* Fully hidden by default */
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+/* TRIGGER THE FILL ON HOVER */
+.skill-card:hover .progress-fill {
+  /* This uses the --percent variable from your HTML */
+  stroke-dashoffset: calc(377 - (377 * var(--percent)) / 100);
+}
+
+/* =========================================
+   LOGO & TEXT STYLING
+   ========================================= */
+.skill-logo {
+  z-index: 2;
+  width: 60px;
+  height: 60px;
+}
+
+.skill-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%); /* Keeps it clean and monochrome */
+  transition: all 0.4s ease;
+  opacity: 0.6;
+}
+
+.skill-card:hover img {
+  filter: grayscale(0%); /* Color pops on hover */
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.skill-info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.skill-info h3 {
+  font-family: 'Arial Black', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.skill-info .num-container {
+  display: block;
+  font-size: 22px; /* Bigger impact */
+  font-weight: 900;
+  color: #000;
+  margin-top: 5px;
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Initial fade-in for cards */
+.skill-card {
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+  animation-delay: calc(var(--i) * 0.1s + 0.5s);
+}
+/* =========================================
+   NAVIGATION - BRACKET REVEAL STYLE
+   ========================================= */
+.nav {
+  display: flex;
+  gap: 10px;
+}
+
+.nav a {
+  position: relative;
+  margin-left: 30px;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 800;
+  color: #888; /* Gray by default */
+  padding: 5px 15px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+/* THE BRACKETS (Pseudo-elements) */
+.nav a::before,
+.nav a::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: #000;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+/* Left Bracket [ */
+.nav a::before {
+  left: 0;
+  transform: translateX(10px);
+}
+
+/* Right Bracket ] */
+.nav a::after {
+  right: 0;
+  transform: translateX(-10px);
+}
+
+/* HOVER & ACTIVE: Text turns black and brackets snap into place */
+.nav a:hover,
+.nav a.active {
+  color: #000;
+}
+
+.nav a:hover::before,
+.nav a.active::before {
+  opacity: 1;
+  transform: translateX(-5px); /* Snaps slightly outside the text */
+}
+
+.nav a:hover::after,
+.nav a.active::after {
+  opacity: 1;
+  transform: translateX(5px); /* Snaps slightly outside the text */
+}
+
+/* Optional: Slight "Glitch" jump on hover */
+.nav a:hover {
+  transform: translateY(-2px);
+}
+/* ================================
+   SOCIAL LOGOS - SHUTTER STYLE
+=============================== */
+.social-links {
+  margin-top: 60px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  
+  /* Initial Reveal Animation */
+  opacity: 0;
+  animation: socialEntrance 1s ease forwards;
+  animation-delay: 2s;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: #000;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  position: relative;
+  border: 1px solid #000; /* Sharp black frame */
+  transition: all 0.4s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+/* THE SHUTTER EFFECT */
+.social-links a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  transform: scaleY(0); /* Hidden vertically */
+  transform-origin: bottom;
+  z-index: -1;
+  transition: transform 0.4s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+/* HOVER STATE */
+.social-links a:hover {
+  color: #fff; /* Icon turns white */
+  transform: translateY(-8px); /* Lifts up high */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.social-links a:hover::before {
+  transform: scaleY(1); /* Black shutter slides up to fill */
+}
+
+/* Tooltip - appears above on hover */
+.social-links a::after {
+  content: attr(aria-label);
+  position: absolute;
+  top: -25px;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #000;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.social-links a:hover::after {
+  opacity: 1;
+}
+
+@keyframes socialEntrance {
+  from { opacity: 0; filter: blur(5px); }
+  to { opacity: 1; filter: blur(0); }
+}
+.center{
+    text-align: center;
+    padding-bottom: 10px;
+}
+/* ================================
+   ABOUT ME PAGE STYLES
+================================ */
+/* BACKGROUND GHOST NAME */
+/* BACKGROUND GHOST NAME - HIGH VISIBILITY VERSION */
+.sticky-name {
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: 100%; 
+    text-align: center; 
+    z-index: 0; 
+    pointer-events: none;
+}
+
+.big-name {
+    font-size: 15vw; 
+    font-weight: 950; 
+    /* CHANGE 1: Use a darker gray (#eeeeee or #e0e0e0) */
+    color: #eeeeee; 
+    letter-spacing: -0.8vw; 
+    line-height: 0.8; 
+    /* CHANGE 2: Set opacity to 1 so it doesn't fade away */
+    opacity: 1; 
+    text-transform: uppercase;
+}
+
+/* CONTAINER LAYOUT */
+.scroll-content { 
+    position: relative; 
+    z-index: 1; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 100px 40px; 
+}
+.content-section { 
+    margin-bottom: 200px; 
+}
+
+/* FIXING TYPING OVERLAP - HERO FLEX */
+.hero-flex { 
+    display: flex; 
+    gap: 80px; 
+    align-items: flex-start; 
+    justify-content: space-between; /* Ensures separation */
+}
+
+/* LOCKING THE LEFT COLUMN WIDTH */
+.hero-left {
+    flex: 1.2; 
+    min-width: 0; /* Critical: prevents typing text from pushing the image */
+}
+
+/* THE CONTAINER FOR IMAGE */
+.hero-right {
+    flex: 0.8;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.section-label { 
+    font-size: 10px; 
+    letter-spacing: 8px; 
+    color: #ccc; 
+    margin-bottom: 60px; 
+}
+
+.profile-static {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* THE IMAGE - FULL COLOR & STATIC */
+.personal-img-fixed {
+    width: 100%;
+    height: 550px; 
+    object-fit: cover;
+    filter: none !important; 
+    border: none;
+    outline: none;
+    transition: none !important; 
+    transform: none !important;
+}
+
+/* PREVENT HOVER INTERFERENCE */
+.profile-static:hover .personal-img-fixed {
+    filter: none !important;
+    transform: none !important;
+}
+
+/* EDUCATION HOVER INVERSION */
+.edu-item { 
+    display: grid; 
+    grid-template-columns: 150px 1fr; 
+    padding: 50px; 
+    border-bottom: 1px solid #eee; 
+    transition: 0.5s; 
+    cursor: default;
+}
+.edu-item:hover { 
+    background: #000; 
+    color: #fff; 
+    transform: scale(1.02); 
+}
+.year { 
+    font-weight: 950; 
+    color: #888; 
+}
+.edu-item:hover .year { 
+    color: #555; 
+}
+.specialization { 
+    display: inline-block; 
+    margin-top: 15px; 
+    font-size: 11px; 
+    padding: 4px 12px; 
+    background: #000; 
+    color: #fff; 
+    font-weight: 900; 
+}
+.edu-item:hover .specialization { 
+    background: #fff; 
+    color: #000; 
+}
+
+/* CERTIFICATE GRID & HOVER */
+.proof-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 40px; 
+}
+.proof-card { 
+    border: 1px solid #eee; 
+    background: #fff; 
+    transition: 0.5s; 
+}
+.proof-img-wrap { 
+    position: relative; 
+    height: 300px; 
+    overflow: hidden; 
+}
+.proof-img-wrap img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    filter: none !important; /* Change from grayscale(1) to none */
+    transition: 0.7s; 
+}
+.overlay { 
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.85); 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    opacity: 0; 
+    transition: 0.4s; 
+}
+.overlay span { 
+    color: #fff; 
+    font-weight: 900; 
+    border: 1px solid #fff; 
+    padding: 12px 25px; 
+    font-size: 11px; 
+}
+
+.proof-card:hover { 
+    transform: translateY(-15px); 
+    border-color: #000; 
+    box-shadow: 0 30px 60px rgba(0,0,0,0.1); 
+}
+.proof-card:hover img { 
+    filter: none !important;
+    transform: scale(1.1); 
+}
+.proof-card:hover .overlay { 
+    opacity: 1; 
+}
+
+/* SERIAL MARQUEE */
+.serial-marquee { 
+    overflow: hidden; 
+    background: #000; 
+    color: #fff; 
+    padding: 30px 0; 
+    border-top: 1px solid #000; 
+}
+.marquee-track { 
+    display: flex; 
+    gap: 120px; 
+    animation: scrollSerials 25s linear infinite; 
+    white-space: nowrap; 
+}
+.m-item { 
+    font-size: 24px; 
+    font-weight: 900; 
+    letter-spacing: 1px; 
+}
+
+@keyframes scrollSerials { 
+    0% { transform: translateX(0); } 
+    100% { transform: translateX(-50%); } 
+}
+
+/* TYPING HEADER & SUMMARY WRAPPING FIX */
+.typing-header { 
+    font-size: 64px; 
+    font-weight: 900; 
+    line-height: 1.1; 
+    margin-bottom: 30px; 
+    word-wrap: break-word; /* Prevents long roles from breaking column */
+    max-width: 100%;
+}
+.summary-box { 
+    font-size: 19px; 
+    line-height: 1.8; 
+    color: #333; 
+    font-weight: 500; 
+    max-width: 100%; 
+}
+/* ADJUSTED LINK STYLES */
+/* SERIAL MARQUEE CONTAINER */
+.serial-marquee { 
+    overflow: hidden; 
+    background: #000; 
+    padding: 40px 0; 
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+}
+
+/* THE TRACK THAT MOVES */
+.marquee-track { 
+    display: flex; 
+    gap: 60px; 
+    width: max-content;
+    animation: scrollSerials 30s linear infinite; 
+}
+
+/* PAUSE WHEN MOUSE IS OVER */
+.serial-marquee:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+/* INDIVIDUAL CERTIFICATE STYLE */
+.m-item { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    transition: 0.4s ease;
+}
+
+.m-item img {
+    height: 150px; /* Uniform height for all certificates */
+    width: auto;
+    filter: none !important; /* Forces original color */
+    border: 1px solid #444;
+    transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.m-item span {
+    font-size: 12px;
+    font-weight: 900;
+    color: #555;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* HOVER EFFECT FOR SINGLE CERTIFICATE */
+.m-item:hover img {
+    filter: grayscale(0); /* Turns to color */
+    transform: scale(1.1) translateY(-10px);
+    border-color: #fff;
+    box-shadow: 0 15px 30px rgba(255,255,255,0.1);
+}
+
+.m-item:hover span {
+    color: #fff;
+}
+
+/* THE SMOOTH LOOP ANIMATION */
+@keyframes scrollSerials { 
+    0% { transform: translateX(0); } 
+    100% { transform: translateX(-50%); } 
+}
+/* CONTACT PAGE STYLES */
+/* =========================================
+   1. CORE ARCHITECTURAL LAYOUT
+   ========================================= */
+.contact-section {
+    min-height: 100vh;
+    padding: 180px 10% 80px 10%;
+    background: #ffffff; /* Consistent theme */
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 120px;
+    align-items: flex-start;
+}
+
+/* =========================================
+   2. HEADING: KINETIC BLADE-WIPE REVEAL
+   ========================================= */
+.reveal-box {
+    position: relative;
+    overflow: hidden;
+    margin: 30px 0;
+}
+
+.black-mask {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #000;
+    z-index: 10;
+    transform: translateX(-101%);
+    animation: surgicalWipe 1.4s cubic-bezier(0.77, 0, 0.18, 1) 0.5s forwards;
+}
+
+.main-title {
+    font-size: 86px;
+    font-weight: 950;
+    line-height: 0.85;
+    letter-spacing: -6px;
+    text-transform: uppercase;
+    clip-path: inset(0 100% 0 0);
+    animation: textAppear 1.4s cubic-bezier(0.77, 0, 0.18, 1) 0.5s forwards;
+}
+
+@keyframes surgicalWipe {
+    0% { transform: translateX(-101%); }
+    50% { transform: translateX(0); }
+    100% { transform: translateX(101%); }
+}
+
+@keyframes textAppear {
+    0% { clip-path: inset(0 100% 0 0); }
+    50% { clip-path: inset(0 0 0 0); }
+    100% { clip-path: inset(0 0 0 0); }
+}
+
+/* =========================================
+   3. STAGGERED INFO & FORM REVEAL
+   ========================================= */
+.category-label {
+    font-size: 10px;
+    font-weight: 950;
+    letter-spacing: 5px;
+    color: #ccc;
+}
+
+.meta-item {
+    margin-bottom: 35px;
+    opacity: 0;
+    transform: translateX(-30px);
+    animation: slideRight 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    animation-delay: calc(var(--d) * 0.2s + 1.2s);
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 45px;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: slideUp 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    animation-delay: calc(var(--j) * 0.1s + 1.5s);
+}
+
+@keyframes slideRight { to { opacity: 1; transform: translateX(0); } }
+@keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
+
+/* =========================================
+   4. INTERACTIVE INPUTS & BUTTON
+   ========================================= */
+.input-group label {
+    font-size: 11px;
+    font-weight: 950;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.input-group input, .input-group textarea {
+    width: 100%;
+    padding: 15px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #f2f2f2;
+    font-size: 18px;
+    outline: none;
+}
+
+.line-reveal {
+    position: absolute;
+    bottom: 0; left: 50%;
+    width: 0; height: 2px;
+    background: #000;
+    transition: 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    transform: translateX(-50%);
+}
+
+.input-group input:focus ~ .line-reveal { width: 100%; }
+
+.submit-action {
+    margin-top: 20px;
+    padding: 26px 80px;
+    background: #000;
+    color: #fff;
+    border: none;
+    font-weight: 950;
+    letter-spacing: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: 0.5s;
+    opacity: 0;
+    animation: slideUp 1s cubic-bezier(0.19, 1, 0.22, 1) 2.2s forwards;
+}
+
+.submit-action:hover {
+    background: #1a1a1a;
+    transform: translateY(-8px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+}
+
+#status-message {
+    margin-top: 20px;
+    font-weight: 950;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+/* =========================================
+   SURGICAL META-LINKS ANIMATION
+   ========================================= */
+.meta-links {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.wipe-box {
+    position: relative;
+    overflow: hidden;
+    width: fit-content;
+    margin-bottom: 5px;
+}
+
+/* THE BLACK "BLADE" THAT REVEALS THE TEXT */
+.surgical-blade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 10;
+    transform: translateX(-101%);
+    /* Animation triggers in a sequence after the main heading */
+    animation: bladeSlide 1.2s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+    animation-delay: calc(var(--d) * 0.2s + 1.2s);
+}
+
+.meta-item span.label, 
+.meta-item p.detail {
+    display: block;
+    clip-path: inset(0 100% 0 0);
+    animation: textUnmask 1.2s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+    animation-delay: calc(var(--d) * 0.2s + 1.2s);
+}
+
+/* SYNCED KEYFRAMES */
+@keyframes bladeSlide {
+    0% { transform: translateX(-101%); }
+    50% { transform: translateX(0); }
+    100% { transform: translateX(101%); }
+}
+
+@keyframes textUnmask {
+    0% { clip-path: inset(0 100% 0 0); }
+    50% { clip-path: inset(0 0 0 0); }
+    100% { clip-path: inset(0 0 0 0); }
+}
+
+/* --- TEXT STYLING (CONSISTENT) --- */
+.meta-item .label {
+    font-size: 10px;
+    font-weight: 950;
+    letter-spacing: 5px;
+    color: #ccc; /* Subtle ghost-gray */
+    text-transform: uppercase;
+}
+
+.meta-item .detail {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+    margin-top: 5px;
+}
+/* =========================================
+   PROJECTS PAGE STYLES
+   ========================================= */
+/* =========================================
+   PROJECTS LAYOUT & ANIMATION
+   ========================================= */
+.projects-container {
+    padding: 160px 10% 100px 10%;
+    background: #ffffff; /* Matches Index/About/Skills */
+}
+
+/* SURGICAL HEADING REVEAL */
+.reveal-box {
+    position: relative;
+    overflow: hidden;
+    width: fit-content;
+}
+
+.surgical-blade {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #000;
+    z-index: 10;
+    transform: translateX(-101%);
+    animation: bladeSlide 1.4s cubic-bezier(0.77, 0, 0.18, 1) 0.5s forwards;
+}
+
+.main-title {
+    font-size: 110px;
+    font-weight: 950;
+    line-height: 0.8;
+    letter-spacing: -6px;
+    text-transform: uppercase;
+    clip-path: inset(0 100% 0 0);
+    animation: textUnmask 1.4s cubic-bezier(0.77, 0, 0.18, 1) 0.5s forwards;
+}
+
+@keyframes bladeSlide {
+    0% { transform: translateX(-101%); }
+    50% { transform: translateX(0); }
+    100% { transform: translateX(101%); }
+}
+
+@keyframes textUnmask {
+    0% { clip-path: inset(0 100% 0 0); }
+    100% { clip-path: inset(0 0 0 0); }
+}
+
+/* DYNAMIC GRID SYSTEM */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 100px 60px;
+    margin-top: 80px;
+}
+
+.project-card {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: cardEntrance 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    animation-delay: calc(var(--k) * 0.2s + 1.2s);
+}
+
+@keyframes cardEntrance {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.project-image-wrapper {
+    position: relative;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    background: #f2f2f2; /* Consistency accent */
+}
+
+.image-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: #000;
+    z-index: 2;
+    transition: 0.8s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.project-card:hover .image-overlay {
+    transform: translateX(101%);
+}
+
+.project-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.project-card:hover img {
+    transform: scale(1.1);
+}
+
+/* TYPOGRAPHY */
+.project-info {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.project-meta span {
+    font-size: 10px;
+    font-weight: 950;
+    letter-spacing: 2px;
+    color: #ccc;
+}
+
+.project-meta h2 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-top: 8px;
+    text-transform: uppercase;
+}
+
+.view-link {
+    text-decoration: none;
+    color: #000;
+    font-weight: 950;
+    font-size: 11px;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.view-link:hover {
+    color: #888;
+}
+/* SEE MY WOKR BUTTON */
+/* =========================================
+   "SEE MY WORKS" KINETIC BUTTON
+   ========================================= */
+/* =========================================
+   BEST-IN-CLASS ARCHITECTURAL BUTTON
+   ========================================= */
+.cta-link {
+    text-decoration: none;
+    display: inline-block;
+    perspective: 1000px; /* Prepares for 3D depth */
+}
+
+.see-works-btn {
+    position: relative;
+    padding: 26px 70px;
+    background: transparent; /* Changed for the slide effect */
+    color: #000;
+    border: 2px solid #000;
+    font-weight: 950;
+    letter-spacing: 5px;
+    font-size: 13px;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: color 0.5s cubic-bezier(0.19, 1, 0.22, 1), 
+                transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* THE "BLADE" BACKGROUND SLIDE */
+.see-works-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: -1;
+    transform: scaleX(0); /* Starts hidden */
+    transform-origin: right; /* Slices from right to left */
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+/* HOVER INTERACTIONS */
+.see-works-btn:hover {
+    color: #fff; /* Text flips to white as blade passes */
+    transform: translateY(-8px) rotateX(5deg); /* Professional tilt */
+    box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+}
+
+.see-works-btn:hover::before {
+    transform: scaleX(1);
+    transform-origin: left; /* Slices back out on leave */
+}
+
+/* KINETIC ARROW MOVEMENT */
+.see-works-btn i {
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), 
+                color 0.5s ease;
+}
+
+.see-works-btn:hover i {
+    transform: translateX(15px) scale(1.3);
+}
+
+/* ACTIVE CLICK HAPTIC */
+.see-works-btn:active {
+    transform: translateY(-2px) scale(0.97);
+    transition: 0.1s;
+}

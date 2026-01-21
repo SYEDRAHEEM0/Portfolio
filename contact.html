@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Raheem</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page-content">
+    <div class="logo reveal-text">
+        <span>R</span>
+        </div>
+    
+        <!-- NAVIGATION -->
+        <nav class="nav">
+        <a href="index.html" class="reveal-text">
+            <span class="wipe"></span>
+            <span class="content">HOME</span>
+        </a>
+        <a href="about.html" class="reveal-text">
+            <span class="wipe"></span>
+            <span class="content">ABOUT</span>
+        </a>
+        <a href="skill.html" class="reveal-text">
+            <span class="wipe"></span>
+            <span class="content">SKILLS</span>
+        </a>
+        <a href="projects.html" class="reveal-text">
+            <span class="wipe"></span>
+            <span class="content">PROJECTS</span>
+        </a>
+        <a href="contact.html" class="reveal-text">
+            <span class="wipe"></span>
+            <span class="content">CONTACT</span>
+        </a>
+        </nav>
+
+<section class="contact-section">
+    <div class="contact-container">
+        <div class="contact-info">
+            <span class="category-label">04 / PROJECT INQUIRY</span>
+            <div class="reveal-box">
+                <div class="black-mask"></div>
+                <h1 class="main-title">GET IN <br>TOUCH.</h1>
+            </div>
+
+            <div class="meta-links">
+    <div class="meta-item" style="--d:1">
+        <div class="wipe-box">
+            <div class="surgical-blade"></div>
+            <span class="label">EMAIL</span>
+        </div>
+        <div class="wipe-box">
+            <div class="surgical-blade"></div>
+            <p class="detail">rahimsd63@gmail.com</p>
+        </div>
+    </div>
+
+    <div class="meta-item" style="--d:2">
+        <div class="wipe-box">
+            <div class="surgical-blade"></div>
+            <span class="label">LOCATION</span>
+        </div>
+        <div class="wipe-box">
+            <div class="surgical-blade"></div>
+            <p class="detail">Hyderabad, India</p>
+        </div>
+    </div>
+            </div>
+        </div>
+
+        <div class="contact-form-wrapper">
+            <form id="contact-form" class="surgical-form" action="https://api.web3forms.com/submit" method="POST">
+                
+                <input type="hidden" name="access_key" value="4719da72-3722-4ae5-93f0-0b9a0588509f">
+
+                <div class="input-group" style="--j: 1">
+                    <label>01. FULL NAME</label>
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <div class="line-reveal"></div>
+                </div>
+
+                <div class="input-group" style="--j: 2">
+                    <label>02. PHONE NUMBER</label>
+                    <input type="tel" name="phone" placeholder="+91 00000 00000" required>
+                    <div class="line-reveal"></div>
+                </div>
+
+                <div class="input-group" style="--j: 3">
+                    <label>03. EMAIL ADDRESS</label>
+                    <input type="email" name="email" placeholder="email@example.com" required>
+                    <div class="line-reveal"></div>
+                </div>
+
+                <div class="input-group full" style="--j: 4">
+                    <label>04. PROJECT BRIEF</label>
+                    <textarea name="message" rows="3" placeholder="How can I help you?"></textarea>
+                    <div class="line-reveal"></div>
+                </div>
+
+                <button type="submit" id="submit-btn" class="submit-action">
+                    SEND MESSAGE <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                
+                <p id="status-message"></p>
+            </form>
+        </div>
+    </div>
+</section>
+    </div>
+<script>
+const form = document.getElementById('contact-form');
+const status = document.getElementById('status-message');
+const btn = document.getElementById('submit-btn');
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    btn.innerHTML = "SENDING...";
+    btn.disabled = true;
+
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let res = await response.json();
+            if (response.status == 200) {
+                status.innerHTML = "MESSAGE SENT SUCCESSFULLY.";
+                status.style.color = "black";
+                form.reset();
+            } else {
+                status.innerHTML = "ERROR: " + res.message;
+                status.style.color = "red";
+            }
+        })
+        .catch(error => {
+            status.innerHTML = "CONNECTION ERROR.";
+            status.style.color = "red";
+        })
+        .then(function() {
+            btn.innerHTML = "SEND MESSAGE <i class='fa-solid fa-arrow-right'></i>";
+            btn.disabled = false;
+        });
+});
+</script>
+</body>
+</html>
