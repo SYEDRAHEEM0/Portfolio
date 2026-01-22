@@ -10,7 +10,6 @@ body {
   padding: 40px 60px;
 }
 
-/* LOGO */
 .logo {
   width: 40px;
   height: 40px;
@@ -24,7 +23,6 @@ body {
   padding-top: 8px;
 }
 
-/* NAV */
 .nav {
   position: absolute;
   top: 40px;
@@ -57,17 +55,14 @@ body {
   margin-top: 6px;
 }
 
-/* HERO */
 .hero {
   display: flex;
   justify-content: space-between;
-  margin-top: 60px; /* Changed from 140px to 60px to move it UP */
+  margin-top: 60px; 
 }
-/* LEFT */
-/* 2. Reset the left side positioning */
 .left {
   max-width: 520px;
-  top: 0; /* Changed from -160px to 0 for a clean start */
+  top: 0; 
   position: relative;
 }
 .left h1 {
@@ -96,13 +91,12 @@ body {
   font-size: 14px;
 }
 
-/* RIGHT */
-/* 3. Reset the right side positioning */
+
 .right {
   position: relative;
   width: 560px;
   height: 460px;
-  top: -40px; /* Small negative value to pull the whole group up slightly */
+  top: -40px; 
 }
 
 .circle {
@@ -112,8 +106,8 @@ body {
   background: #f2f2f2;
   border-radius: 50%;
   right: 0;
-  top: 0;           /* Changed from 40px to 0 to move it up */
-  margin-top: 0;    /* Reset margin */
+  top: 0;           
+  margin-top: 0;   
   margin-right: 30px;
   display: block;
 }
@@ -128,7 +122,6 @@ body {
 }
 
 
-/* SCROLL */
 .scroll {
   position: fixed;
   right: 20px;
@@ -169,8 +162,6 @@ body {
   animation-delay: 1s;
 }
 
-
-/* second line delay */
 .line.delay::before {
   animation-delay: 0.6s;
 }
@@ -179,7 +170,6 @@ body {
   animation-delay: 1s;
 }
 
-/* animations */
 @keyframes lineMove {
   to {
     transform: translateX(100%);
@@ -191,16 +181,12 @@ body {
     transform: translateY(0);
   }
 }
-/* ================================
-   PARAGRAPH LINE REVEAL
-================================ */
 .reveal-p {
   position: relative;
   overflow: hidden;
   margin: 28px 0;
 }
 
-/* black line */
 .reveal-p .p-line {
   position: absolute;
   left: 0;
@@ -214,7 +200,6 @@ body {
   animation-delay: 1s;
 }
 
-/* text */
 .reveal-p .p-text {
   display: block;
   font-size: 15px;
@@ -225,9 +210,6 @@ body {
   animation-delay: 1.6s;
 }
 
-/* ================================
-   KEYFRAMES
-================================ */
 @keyframes pLineMove {
   to {
     transform: translateX(100%);
@@ -240,9 +222,6 @@ body {
   }
 }
 
-/* ================================
-   BOLD SHARP X (FINAL)
-================================ */
 
 .big-x {
   position: absolute;
@@ -251,37 +230,29 @@ body {
   right: 40px;
   top: 0;
   z-index: 1;
-  /* This is the secret: it chops everything outside the 360px box */
   overflow: hidden; 
   animation: xMoveUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* COMMON BAR STYLE */
 .big-x .bar {
   position: absolute;
-  width: 150%;      /* Longer than container to ensure it fills the diagonal */
-  height: 60px;      /* Thickness from your reference image */
+  width: 150%;      
+  height: 60px;      
   background: #111;
   top: 50%;
   left: 50%;
 }
 
-/* BAR 1: Top-Left to Bottom-Right */
 .big-x .bar-1 {
-  /* Center it, then rotate, then slide it out for the animation start */
   transform: translate(-50%, -50%) rotate(45deg) translateX(-100%);
   animation: slideInBar1 0.9s cubic-bezier(0.77, 0, 0.18, 1) 0.2s forwards;
 }
 
-/* BAR 2: Bottom-Left to Top-Right */
 .big-x .bar-2 {
   transform: translate(-50%, -50%) rotate(-45deg) translateX(-100%);
   animation: slideInBar2 0.9s cubic-bezier(0.77, 0, 0.18, 1) 0.4s forwards;
 }
 
-/* ================================
-    KEYFRAMES (SLIDING INTO VIEW)
-================================ */
 
 @keyframes slideInBar1 {
   to {
@@ -309,19 +280,18 @@ body {
   display: flex;
   flex-direction: row;
   gap: 150px;
-  align-items: flex-start; /* Changed from 'center' to 'flex-start' to pull everything UP */
+  align-items: flex-start; 
 }
-/* COMBINED IMAGE POSITIONING */
+
 .right img, .hero-image {
   position: absolute;
-  width: 280px;       /* Increased size to fit the circle better */
+  width: 280px;      
   right: 80px;
-  height:380px;        /* Adjusted from 90px to move it left/center */
-  top: 15px;          /* Adjusted from 60px to move it UP */
-  filter: none;       /* THIS REMOVES THE BLACK AND WHITE */
+  height:380px;       
+  top: 15px;          
+  filter: none;       
   z-index: 2;
-  border-radius: 60%; /* Ensures the image itself is a perfect circle */
-  /* Keep your animations below */
+  border-radius: 60%; 
   opacity: 0;
   transform: translateY(20px);
   animation: 
@@ -352,22 +322,18 @@ body {
   }
 }
 
-/* ================================
-   UNIVERSAL TEXT REVEAL
-================================ */
 .reveal-text {
   position: relative;
   display: inline-block;
   overflow: hidden;
 }
 
-/* black line */
 .reveal-text .wipe {
   position: absolute;
   left: 0;
   top: 50%;
   width: 120%;
-  height: 46px;              /* thickness */
+  height: 46px;             
   background: #000;
 
   transform: translateX(-100%);
@@ -375,7 +341,6 @@ body {
   animation-delay: 0.6s;
 }
 
-/* text */
 .reveal-text .content {
   display: inline-block;
   text-align: center;
@@ -384,9 +349,6 @@ body {
   animation-delay: 1s;
 }
 
-/* ================================
-   KEYFRAMES
-================================ */
 @keyframes wipeMove {
   to {
     transform: translateX(100%);
@@ -403,7 +365,7 @@ body {
    ========================================= */
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Balanced spacing */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
   gap: 60px 20px;
   margin-top: 80px;
   padding-bottom: 100px;
@@ -419,12 +381,9 @@ body {
 }
 
 .skill-card:hover {
-  transform: translateY(-5px); /* Subtle lift on hover */
+  transform: translateY(-5px); 
 }
 
-/* =========================================
-   THE CIRCLE BOX & SVG
-   ========================================= */
 .circle-box {
   position: relative;
   width: 150px;
@@ -438,33 +397,27 @@ body {
   position: absolute;
   width: 150px;
   height: 150px;
-  transform: rotate(-90deg); /* Starts the path from the top */
+  transform: rotate(-90deg); 
 }
 
 .progress-svg circle {
   fill: none;
   stroke-width: 10;
-  stroke: #f2f2f2; /* Light gray background ring */
+  stroke: #f2f2f2; 
 }
 
-/* THE WORKING PART */
 .progress-svg .progress-fill {
-  stroke: #000; /* Solid black progress line */
-  stroke-linecap: square; /* Sharp edges to match your theme */
-  stroke-dasharray: 377; /* The circumference */
-  stroke-dashoffset: 377; /* Fully hidden by default */
+  stroke: #000; 
+  stroke-linecap: square;
+  stroke-dasharray: 377;
+  stroke-dashoffset: 377; 
   transition: stroke-dashoffset 1.5s cubic-bezier(0.77, 0, 0.18, 1);
 }
 
-/* TRIGGER THE FILL ON HOVER */
 .skill-card:hover .progress-fill {
-  /* This uses the --percent variable from your HTML */
   stroke-dashoffset: calc(377 - (377 * var(--percent)) / 100);
 }
 
-/* =========================================
-   LOGO & TEXT STYLING
-   ========================================= */
 .skill-logo {
   z-index: 2;
   width: 60px;
@@ -475,13 +428,13 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: grayscale(100%); /* Keeps it clean and monochrome */
+  filter: grayscale(100%); 
   transition: all 0.4s ease;
   opacity: 0.6;
 }
 
 .skill-card:hover img {
-  filter: grayscale(0%); /* Color pops on hover */
+  filter: grayscale(0%); 
   opacity: 1;
   transform: scale(1.1);
 }
@@ -501,29 +454,23 @@ body {
 
 .skill-info .num-container {
   display: block;
-  font-size: 22px; /* Bigger impact */
+  font-size: 22px; 
   font-weight: 900;
   color: #000;
   margin-top: 5px;
 }
 
-/* =========================================
-   ANIMATIONS
-   ========================================= */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Initial fade-in for cards */
 .skill-card {
   opacity: 0;
   animation: fadeIn 0.8s ease forwards;
   animation-delay: calc(var(--i) * 0.1s + 0.5s);
 }
-/* =========================================
-   NAVIGATION - BRACKET REVEAL STYLE
-   ========================================= */
+
 .nav {
   display: flex;
   gap: 10px;
@@ -536,13 +483,12 @@ body {
   font-size: 13px;
   letter-spacing: 2px;
   font-weight: 800;
-  color: #888; /* Gray by default */
+  color: #888; 
   padding: 5px 15px;
   text-transform: uppercase;
   transition: all 0.3s ease;
 }
 
-/* THE BRACKETS (Pseudo-elements) */
 .nav a::before,
 .nav a::after {
   content: '';
@@ -555,19 +501,16 @@ body {
   transition: all 0.3s cubic-bezier(0.77, 0, 0.18, 1);
 }
 
-/* Left Bracket [ */
 .nav a::before {
   left: 0;
   transform: translateX(10px);
 }
 
-/* Right Bracket ] */
 .nav a::after {
   right: 0;
   transform: translateX(-10px);
 }
 
-/* HOVER & ACTIVE: Text turns black and brackets snap into place */
 .nav a:hover,
 .nav a.active {
   color: #000;
@@ -576,29 +519,25 @@ body {
 .nav a:hover::before,
 .nav a.active::before {
   opacity: 1;
-  transform: translateX(-5px); /* Snaps slightly outside the text */
+  transform: translateX(-5px); 
 }
 
 .nav a:hover::after,
 .nav a.active::after {
   opacity: 1;
-  transform: translateX(5px); /* Snaps slightly outside the text */
+  transform: translateX(5px); 
 }
 
-/* Optional: Slight "Glitch" jump on hover */
 .nav a:hover {
   transform: translateY(-2px);
 }
-/* ================================
-   SOCIAL LOGOS - SHUTTER STYLE
-=============================== */
+
 .social-links {
   margin-top: 60px;
   display: flex;
   gap: 15px;
   align-items: center;
-  
-  /* Initial Reveal Animation */
+
   opacity: 0;
   animation: socialEntrance 1s ease forwards;
   animation-delay: 2s;
@@ -614,11 +553,10 @@ body {
   justify-content: center;
   font-size: 18px;
   position: relative;
-  border: 1px solid #000; /* Sharp black frame */
+  border: 1px solid #000; 
   transition: all 0.4s cubic-bezier(0.77, 0, 0.18, 1);
 }
 
-/* THE SHUTTER EFFECT */
 .social-links a::before {
   content: '';
   position: absolute;
@@ -627,24 +565,22 @@ body {
   width: 100%;
   height: 100%;
   background: #000;
-  transform: scaleY(0); /* Hidden vertically */
+  transform: scaleY(0); 
   transform-origin: bottom;
   z-index: -1;
   transition: transform 0.4s cubic-bezier(0.77, 0, 0.18, 1);
 }
 
-/* HOVER STATE */
 .social-links a:hover {
-  color: #fff; /* Icon turns white */
-  transform: translateY(-8px); /* Lifts up high */
+  color: #fff; 
+  transform: translateY(-8px); 
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .social-links a:hover::before {
-  transform: scaleY(1); /* Black shutter slides up to fill */
+  transform: scaleY(1); 
 }
 
-/* Tooltip - appears above on hover */
 .social-links a::after {
   content: attr(aria-label);
   position: absolute;
@@ -672,8 +608,6 @@ body {
 /* ================================
    ABOUT ME PAGE STYLES
 ================================ */
-/* BACKGROUND GHOST NAME */
-/* BACKGROUND GHOST NAME - HIGH VISIBILITY VERSION */
 .sticky-name {
     position: fixed; 
     top: 50%; 
@@ -688,16 +622,13 @@ body {
 .big-name {
     font-size: 15vw; 
     font-weight: 950; 
-    /* CHANGE 1: Use a darker gray (#eeeeee or #e0e0e0) */
     color: #eeeeee; 
     letter-spacing: -0.8vw; 
     line-height: 0.8; 
-    /* CHANGE 2: Set opacity to 1 so it doesn't fade away */
     opacity: 1; 
     text-transform: uppercase;
 }
 
-/* CONTAINER LAYOUT */
 .scroll-content { 
     position: relative; 
     z-index: 1; 
@@ -709,21 +640,18 @@ body {
     margin-bottom: 200px; 
 }
 
-/* FIXING TYPING OVERLAP - HERO FLEX */
 .hero-flex { 
     display: flex; 
     gap: 80px; 
     align-items: flex-start; 
-    justify-content: space-between; /* Ensures separation */
+    justify-content: space-between; 
 }
 
-/* LOCKING THE LEFT COLUMN WIDTH */
 .hero-left {
     flex: 1.2; 
-    min-width: 0; /* Critical: prevents typing text from pushing the image */
+    min-width: 0; 
 }
 
-/* THE CONTAINER FOR IMAGE */
 .hero-right {
     flex: 0.8;
     display: flex;
@@ -744,7 +672,6 @@ body {
     max-width: 400px;
 }
 
-/* THE IMAGE - FULL COLOR & STATIC */
 .personal-img-fixed {
     width: 100%;
     height: 550px; 
@@ -756,13 +683,11 @@ body {
     transform: none !important;
 }
 
-/* PREVENT HOVER INTERFERENCE */
 .profile-static:hover .personal-img-fixed {
     filter: none !important;
     transform: none !important;
 }
 
-/* EDUCATION HOVER INVERSION */
 .edu-item { 
     display: grid; 
     grid-template-columns: 150px 1fr; 
@@ -797,7 +722,6 @@ body {
     color: #000; 
 }
 
-/* CERTIFICATE GRID & HOVER */
 .proof-grid { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
@@ -817,7 +741,7 @@ body {
     width: 100%; 
     height: 100%; 
     object-fit: cover; 
-    filter: none !important; /* Change from grayscale(1) to none */
+    filter: none !important; 
     transition: 0.7s; 
 }
 .overlay { 
@@ -854,7 +778,6 @@ body {
     opacity: 1; 
 }
 
-/* SERIAL MARQUEE */
 .serial-marquee { 
     overflow: hidden; 
     background: #000; 
@@ -879,13 +802,12 @@ body {
     100% { transform: translateX(-50%); } 
 }
 
-/* TYPING HEADER & SUMMARY WRAPPING FIX */
 .typing-header { 
     font-size: 64px; 
     font-weight: 900; 
     line-height: 1.1; 
     margin-bottom: 30px; 
-    word-wrap: break-word; /* Prevents long roles from breaking column */
+    word-wrap: break-word; 
     max-width: 100%;
 }
 .summary-box { 
@@ -895,8 +817,7 @@ body {
     font-weight: 500; 
     max-width: 100%; 
 }
-/* ADJUSTED LINK STYLES */
-/* SERIAL MARQUEE CONTAINER */
+
 .serial-marquee { 
     overflow: hidden; 
     background: #000; 
@@ -906,7 +827,6 @@ body {
     cursor: pointer;
 }
 
-/* THE TRACK THAT MOVES */
 .marquee-track { 
     display: flex; 
     gap: 60px; 
@@ -914,12 +834,10 @@ body {
     animation: scrollSerials 30s linear infinite; 
 }
 
-/* PAUSE WHEN MOUSE IS OVER */
 .serial-marquee:hover .marquee-track {
     animation-play-state: paused;
 }
 
-/* INDIVIDUAL CERTIFICATE STYLE */
 .m-item { 
     display: flex;
     flex-direction: column;
@@ -930,9 +848,9 @@ body {
 }
 
 .m-item img {
-    height: 150px; /* Uniform height for all certificates */
+    height: 150px; 
     width: auto;
-    filter: none !important; /* Forces original color */
+    filter: none !important; 
     border: 1px solid #444;
     transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
@@ -945,9 +863,8 @@ body {
     text-transform: uppercase;
 }
 
-/* HOVER EFFECT FOR SINGLE CERTIFICATE */
 .m-item:hover img {
-    filter: grayscale(0); /* Turns to color */
+    filter: grayscale(0); 
     transform: scale(1.1) translateY(-10px);
     border-color: #fff;
     box-shadow: 0 15px 30px rgba(255,255,255,0.1);
@@ -957,19 +874,15 @@ body {
     color: #fff;
 }
 
-/* THE SMOOTH LOOP ANIMATION */
 @keyframes scrollSerials { 
     0% { transform: translateX(0); } 
     100% { transform: translateX(-50%); } 
 }
 /* CONTACT PAGE STYLES */
-/* =========================================
-   1. CORE ARCHITECTURAL LAYOUT
-   ========================================= */
 .contact-section {
     min-height: 100vh;
     padding: 180px 10% 80px 10%;
-    background: #ffffff; /* Consistent theme */
+    background: #ffffff; 
 }
 
 .contact-container {
@@ -979,9 +892,6 @@ body {
     align-items: flex-start;
 }
 
-/* =========================================
-   2. HEADING: KINETIC BLADE-WIPE REVEAL
-   ========================================= */
 .reveal-box {
     position: relative;
     overflow: hidden;
@@ -1020,9 +930,6 @@ body {
     100% { clip-path: inset(0 0 0 0); }
 }
 
-/* =========================================
-   3. STAGGERED INFO & FORM REVEAL
-   ========================================= */
 .category-label {
     font-size: 10px;
     font-weight: 950;
@@ -1050,9 +957,6 @@ body {
 @keyframes slideRight { to { opacity: 1; transform: translateX(0); } }
 @keyframes slideUp { to { opacity: 1; transform: translateY(0); } }
 
-/* =========================================
-   4. INTERACTIVE INPUTS & BUTTON
-   ========================================= */
 .input-group label {
     font-size: 11px;
     font-weight: 950;
@@ -1112,9 +1016,7 @@ body {
     letter-spacing: 2px;
     text-transform: uppercase;
 }
-/* =========================================
-   SURGICAL META-LINKS ANIMATION
-   ========================================= */
+
 .meta-links {
     margin-top: 60px;
     display: flex;
@@ -1129,7 +1031,6 @@ body {
     margin-bottom: 5px;
 }
 
-/* THE BLACK "BLADE" THAT REVEALS THE TEXT */
 .surgical-blade {
     position: absolute;
     top: 0;
@@ -1139,7 +1040,6 @@ body {
     background: #000;
     z-index: 10;
     transform: translateX(-101%);
-    /* Animation triggers in a sequence after the main heading */
     animation: bladeSlide 1.2s cubic-bezier(0.77, 0, 0.18, 1) forwards;
     animation-delay: calc(var(--d) * 0.2s + 1.2s);
 }
@@ -1152,7 +1052,6 @@ body {
     animation-delay: calc(var(--d) * 0.2s + 1.2s);
 }
 
-/* SYNCED KEYFRAMES */
 @keyframes bladeSlide {
     0% { transform: translateX(-101%); }
     50% { transform: translateX(0); }
@@ -1165,12 +1064,11 @@ body {
     100% { clip-path: inset(0 0 0 0); }
 }
 
-/* --- TEXT STYLING (CONSISTENT) --- */
 .meta-item .label {
     font-size: 10px;
     font-weight: 950;
     letter-spacing: 5px;
-    color: #ccc; /* Subtle ghost-gray */
+    color: #ccc; 
     text-transform: uppercase;
 }
 
@@ -1183,15 +1081,11 @@ body {
 /* =========================================
    PROJECTS PAGE STYLES
    ========================================= */
-/* =========================================
-   PROJECTS LAYOUT & ANIMATION
-   ========================================= */
 .projects-container {
     padding: 160px 10% 100px 10%;
-    background: #ffffff; /* Matches Index/About/Skills */
+    background: #ffffff; 
 }
 
-/* SURGICAL HEADING REVEAL */
 .reveal-box {
     position: relative;
     overflow: hidden;
@@ -1229,7 +1123,6 @@ body {
     100% { clip-path: inset(0 0 0 0); }
 }
 
-/* DYNAMIC GRID SYSTEM */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1252,7 +1145,7 @@ body {
     position: relative;
     aspect-ratio: 16/10;
     overflow: hidden;
-    background: #f2f2f2; /* Consistency accent */
+    background: #f2f2f2; 
 }
 
 .image-overlay {
@@ -1279,7 +1172,6 @@ body {
     transform: scale(1.1);
 }
 
-/* TYPOGRAPHY */
 .project-info {
     margin-top: 25px;
     display: flex;
@@ -1316,23 +1208,15 @@ body {
 .view-link:hover {
     color: #888;
 }
-/* SEE MY WOKR BUTTON */
-/* =========================================
-   "SEE MY WORKS" KINETIC BUTTON
-   ========================================= */
-/* =========================================
-   BEST-IN-CLASS ARCHITECTURAL BUTTON
-   ========================================= */
 .cta-link {
     text-decoration: none;
     display: inline-block;
-    perspective: 1000px; /* Prepares for 3D depth */
-}
+    perspective: 1000px; 
 
 .see-works-btn {
     position: relative;
     padding: 26px 70px;
-    background: transparent; /* Changed for the slide effect */
+    background: transparent; 
     color: #000;
     border: 2px solid #000;
     font-weight: 950;
@@ -1347,7 +1231,6 @@ body {
                 transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* THE "BLADE" BACKGROUND SLIDE */
 .see-works-btn::before {
     content: '';
     position: absolute;
@@ -1357,24 +1240,22 @@ body {
     height: 100%;
     background: #000;
     z-index: -1;
-    transform: scaleX(0); /* Starts hidden */
-    transform-origin: right; /* Slices from right to left */
+    transform: scaleX(0); 
+    transform-origin: right; 
     transition: transform 0.6s cubic-bezier(0.77, 0, 0.18, 1);
 }
 
-/* HOVER INTERACTIONS */
 .see-works-btn:hover {
-    color: #fff; /* Text flips to white as blade passes */
-    transform: translateY(-8px) rotateX(5deg); /* Professional tilt */
+    color: #fff; 
+    transform: translateY(-8px) rotateX(5deg); 
     box-shadow: 0 30px 60px rgba(0,0,0,0.15);
 }
 
 .see-works-btn:hover::before {
     transform: scaleX(1);
-    transform-origin: left; /* Slices back out on leave */
+    transform-origin: left; 
 }
 
-/* KINETIC ARROW MOVEMENT */
 .see-works-btn i {
     transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1), 
                 color 0.5s ease;
@@ -1384,7 +1265,6 @@ body {
     transform: translateX(15px) scale(1.3);
 }
 
-/* ACTIVE CLICK HAPTIC */
 .see-works-btn:active {
     transform: translateY(-2px) scale(0.97);
     transition: 0.1s;
